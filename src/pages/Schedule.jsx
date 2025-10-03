@@ -77,6 +77,60 @@ const Schedule = () => {
                 </span>
               )}
             </div>
+
+            {/* 🔽 Extra Info Section with Badges */}
+            <div className="mt-2 flex flex-wrap gap-2 text-xs">
+              {session.level && (
+                <span className="bg-yellow-500 text-black px-2 py-0.5 rounded-full font-semibold">
+                  {session.level}
+                </span>
+              )}
+
+              {session.prerequisites && session.prerequisites.length > 0 && (
+                <span className="bg-blue-500 text-white px-2 py-0.5 rounded-full font-semibold">
+                  Prerequisites: {session.prerequisites.join(", ")}
+                </span>
+              )}
+
+              {session.learningOutcomes &&
+                session.learningOutcomes.length > 0 && (
+                  <span className="bg-purple-500 text-white px-2 py-0.5 rounded-full font-semibold">
+                    Learning Outcomes
+                  </span>
+                )}
+            </div>
+
+            {session.learningOutcomes &&
+              session.learningOutcomes.length > 0 && (
+                <ul className="list-disc ml-5 mt-1 text-purple-200 text-xs space-y-1">
+                  {session.learningOutcomes.map((outcome, i) => (
+                    <li key={i} className="mt-4  text-sm">
+                      {outcome}
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+            {/* {session.resources && session.resources.length > 0 && (
+              <div className="mt-2">
+                <strong className="text-cyan-300 text-xs">Resources:</strong>
+                <ul className="list-disc ml-5 mt-1 text-cyan-200 text-xs space-y-1">
+                  {session.resources.map((res, i) => (
+                    <li key={i}>
+                      <a
+                        href={res}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline hover:text-cyan-400"
+                      >
+                        {res}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )} */}
+            {/* 🔼 End Extra Info Section */}
           </div>
         </div>
       </div>
@@ -102,7 +156,7 @@ const Schedule = () => {
         </p>
         <br />
         <br />
-        {scheduleData.map((day) => (
+        {scheduleData.conference.days.map((day) => (
           <div key={day.date} className="mb-16">
             <h2 className="text-3xl font-semibold mb-2 text-center text-purple-300">
               {day.date} ({day.day}) – {day.title}
@@ -116,7 +170,7 @@ const Schedule = () => {
             </div>
           </div>
         ))}
-        <div className="text-center text-2xl  w-70  p-2 rounded-lg  text-white ">
+        {/* <div className="text-center text-2xl  w-70  p-2 rounded-lg  text-white ">
           <span className="bg-white text-black p-3 rounded-lg">
             <a
               href="https://docs.google.com/document/d/11UcNU8jXEmsaqHjMS7DYCdFn6pcprI8ar2HqfSh5WRg/edit?usp=sharing"
@@ -125,7 +179,7 @@ const Schedule = () => {
               View Full Schedule
             </a>
           </span>
-        </div>
+        </div> */}
       </div>
     </div>
   );
