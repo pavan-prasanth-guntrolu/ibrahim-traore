@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "L. Venkata Subramanyam",
+    "title": "Lead, IBM Quantum India",
+    "company": "IBM Quantum",
+    "bio": "Pre-Event Orientation session",
+    "image": "/images/dr-l-v-subramaniam.png",
+    "twitter": "@lvenkatasubramanyam",
+    "linkedin": "lvenkatasubramanyam",
+    "talk": {
+      "title": "Advancing Practical Quantum Computing",
+      "abstract": "An overview of IBM Quantum's latest research initiatives and practical applications of quantum computing for industry and academia.",
+      "time": "10:00 AM",
+      "date": "2025-10-15"
+    }
+  }
+]

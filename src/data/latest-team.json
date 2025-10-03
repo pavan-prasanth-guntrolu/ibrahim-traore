@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "name": "Katam Nikhil Teja",
+    "role": "Lead Organizer",
+    "study": "Computer Science and Engineering",
+    "image": "/images/nikhil.jpg",
+    "twitter": "#",
+    "linkedin": "#"
+  },
+  {
+    "id": 2,
+    "name": "Cherukuri Praveen Kumar",
+    "role": "Co Organizer",
+    "study": "Computer Science and Engineering",
+    "image": "/images/cherukuri.jpg",
+    "twitter": "#",
+    "linkedin": "#"
+  },
+  {
+    "id": 3,
+    "name": "D.Kasim Vali",
+    "role": "Co Organizer",
+    "study": "Computer Science and Engineering",
+    "image": "/images/khasim.jpg",
+    "twitter": "#",
+    "linkedin": "#"
+  },
+  {
+    "id": 4,
+    "name": "Ch John Babu",
+    "role": "Co Organizer",
+    "study": "Computer Science and Engineering",
+    "image": "/images/john.jpg",
+    "twitter": "#",
+    "linkedin": "#"
+  },
+  {
+    "id": 5,
+    "name": "K Guna Sri",
+    "role": "Co Organizer",
+    "study": "Computer Science and Engineering",
+    "image": "/images/guna-sri.jpg",
+    "twitter": "#",
+    "linkedin": "#"
+  }
+]
