@@ -55,7 +55,7 @@
         "type": "keynote",
         "location": "Main Auditorium",
         "description": "Exploring the frontiers of quantum computing",
-        "speakers": ["IBM Quantum Researcher", "L Venkata Subramaniam"]
+        "speakers": ["IBM Quantum Researcher"]
       },
       {
         "id": 4,
@@ -109,295 +109,243 @@
   {
     "date": "2025-10-22",
     "day": "Day 2",
-    "title": "Foundations Day (Multi-campus/Virtual)",
-    "theme": "Building Quantum Fundamentals",
+    "title": "Foundations Day",
+    "theme": "Quantum Computing Fundamentals",
     "sessions": [
       {
         "id": 9,
         "time": "9:00 AM - 12:00 PM",
-        "title": "Morning Workshops",
+        "title": "Quantum 101 and Qiskit 101",
         "type": "workshop",
-        "subSessions": [
-          {
-            "id": "9a",
-            "time": "9:00 AM - 12:00 PM",
-            "title": "Quantum Computing Basics",
-            "type": "workshop",
-            "location": "RGUKT Nuzvid",
-            "description": "Introduction to quantum computing fundamentals"
-          },
-          {
-            "id": "9b",
-            "time": "9:00 AM - 12:00 PM",
-            "title": "Quantum Sensing Principles",
-            "type": "workshop",
-            "location": "RGUKT Srikakulam",
-            "description": "Exploration of quantum sensing technologies"
-          },
-          {
-            "id": "9c",
-            "time": "9:00 AM - 12:00 PM",
-            "title": "Quantum Cryptography Fundamentals",
-            "type": "workshop",
-            "location": "RGUKT RK Valley",
-            "description": "Introduction to QKD and post-quantum cryptography"
-          },
-          {
-            "id": "9d",
-            "time": "9:00 AM - 12:00 PM",
-            "title": "Quantum Materials Science",
-            "type": "workshop",
-            "location": "RGUKT Ongole",
-            "description": "Study of quantum materials and their applications"
-          }
+        "location": "Main Auditorium",
+        "description": "Keynote by IBM Quantum Speaker followed by fundamentals",
+        "topics": [
+          "Quantum mechanics fundamentals for computing",
+          "Classical vs quantum computation comparison",
+          "Qiskit installation and environment setup",
+          "Understanding qubits and superposition"
         ]
       },
       {
         "id": 10,
-        "time": "2:00 PM - 4:00 PM",
-        "title": "Virtual Global Connection",
-        "type": "ceremony",
-        "location": "Online",
-        "description": "Connect with Qiskit Fall Fest events worldwide and hear from international speakers"
-      },
-      {
-        "id": 11,
-        "time": "4:30 PM - 6:00 PM",
-        "title": "Challenge Launch: Qiskit Community Pull Requests",
-        "type": "hackathon",
-        "location": "Virtual",
-        "description": "Team formation, project guidelines, and mentorship assignment"
+        "time": "1:00 PM - 5:00 PM",
+        "title": "Beginner Notebook Session",
+        "type": "workshop",
+        "location": "Main Auditorium",
+        "description": "Hands-on beginner-friendly coding with Qiskit",
+        "topics": [
+          "Basic quantum gates and operations",
+          "Creating simple circuits",
+          "Quantum measurement",
+          "Quantum teleportation",
+          "Bell states & entanglement",
+          "Fundamental algorithms"
+        ]
       }
     ]
   },
   {
     "date": "2025-10-23",
     "day": "Day 3",
-    "title": "Specialization Day (Campus-focused)",
-    "theme": "Deep Dive into Quantum Domains",
+    "title": "Intermediate Day",
+    "theme": "Quantum Algorithms & Machine Learning",
     "sessions": [
       {
-        "id": 12,
-        "time": "9:00 AM - 5:00 PM",
-        "title": "Campus-specific Deep Dives",
+        "id": 11,
+        "time": "9:00 AM - 12:00 PM",
+        "title": "Quantum Algorithms Workshop",
         "type": "workshop",
-        "subSessions": [
-          {
-            "id": "12a",
-            "time": "9:00 AM - 5:00 PM",
-            "title": "Quantum Computing Workshop",
-            "location": "RGUKT Nuzvid",
-            "description": "Quantum algorithms implementation, variational algorithms, and hands-on Qiskit coding"
-          },
-          {
-            "id": "12b",
-            "time": "9:00 AM - 5:00 PM",
-            "title": "Marine Quantum Sensing Workshop",
-            "location": "RGUKT Srikakulam",
-            "description": "Quantum sensors for oceanography and environmental monitoring"
-          },
-          {
-            "id": "12c",
-            "time": "9:00 AM - 5:00 PM",
-            "title": "Quantum Cryptography Workshop",
-            "location": "RGUKT RK Valley",
-            "description": "QKD protocols, post-quantum cryptography, and security analysis"
-          },
-          {
-            "id": "12d",
-            "time": "9:00 AM - 5:00 PM",
-            "title": "Quantum Devices Workshop",
-            "location": "RGUKT Ongole",
-            "description": "Quantum hardware overview, materials characterization, and device fabrication"
-          }
+        "location": "Main Auditorium",
+        "topics": [
+          "Deutsch-Jozsa algorithm",
+          "Grover's search",
+          "Shor's factoring basics",
+          "Quantum Fourier Transform",
+          "Quantum speedup & complexity"
+        ]
+      },
+      {
+        "id": 12,
+        "time": "1:00 PM - 2:30 PM",
+        "title": "Quantum Machine Learning Workshop",
+        "type": "workshop",
+        "location": "Main Auditorium",
+        "topics": [
+          "Quantum ML concepts",
+          "VQE introduction",
+          "Quantum Neural Networks",
+          "Quantum feature maps & kernels"
         ]
       },
       {
         "id": 13,
-        "time": "6:00 PM - 8:00 PM",
-        "title": "Inter-campus Virtual Presentations",
-        "type": "presentation",
-        "location": "Virtual",
-        "description": "Knowledge sharing and collaborative presentations between campuses"
+        "time": "2:45 PM - 5:00 PM",
+        "title": "Intermediate Notebook Session",
+        "type": "workshop",
+        "location": "Main Auditorium",
+        "topics": [
+          "Running notebooks via qBraid",
+          "Quantum ML algorithms",
+          "Parameter optimization",
+          "Noise simulation & error handling"
+        ]
       }
     ]
   },
   {
     "date": "2025-10-24",
     "day": "Day 4",
-    "title": "Innovation Day (Hybrid)",
-    "theme": "Quantum Innovation & Research",
+    "title": "Advanced Workshops",
+    "theme": "Quantum Optimization & Real Hardware",
     "sessions": [
       {
         "id": 14,
         "time": "9:00 AM - 12:00 PM",
-        "title": "Morning Panels",
-        "type": "panel",
+        "title": "Quantum Optimization Workshop",
+        "type": "workshop",
         "location": "Main Auditorium",
-        "subSessions": [
-          {
-            "id": "14a",
-            "time": "9:00 AM - 10:30 AM",
-            "title": "Panel 2: Quantum Research in India - Opportunities & Challenges",
-            "type": "panel",
-            "speakers": ["Leading Indian Quantum Researchers"],
-            "location": "Main Auditorium",
-            "description": "Exploring India's quantum research ecosystem"
-          },
-          {
-            "id": "14b",
-            "time": "10:30 AM - 12:00 PM",
-            "title": "Panel 3: Industry Applications of Quantum Technologies",
-            "type": "panel",
-            "speakers": ["Industry Experts"],
-            "location": "Main Auditorium",
-            "description": "Applications of quantum tech in industry"
-          }
+        "topics": [
+          "QAOA",
+          "VQE deep dive",
+          "Max-Cut & TSP",
+          "Combinatorial optimization",
+          "Hybrid algorithms"
         ]
       },
       {
         "id": 15,
-        "time": "2:00 PM - 5:00 PM",
-        "title": "Faculty Presentations & Student Project Showcase",
-        "type": "presentation",
+        "time": "1:00 PM - 2:30 PM",
+        "title": "Quantum Hardware & Error Correction Workshop",
+        "type": "workshop",
         "location": "Main Auditorium",
-        "description": "Faculty-led talks, student innovation showcases, and announcement of innovation challenges"
+        "topics": [
+          "Quantum noise & decoherence",
+          "Error mitigation",
+          "Error correction basics",
+          "Hardware constraints"
+        ]
       },
       {
         "id": 16,
-        "time": "6:00 PM - 8:00 PM",
-        "title": "Virtual Global Collaboration",
-        "type": "ceremony",
-        "location": "Online",
-        "description": "International student interactions and global collaborations"
+        "time": "2:45 PM - 5:00 PM",
+        "title": "Advanced Notebook Session",
+        "type": "workshop",
+        "location": "Main Auditorium",
+        "topics": [
+          "IBM Quantum hardware access",
+          "Performance benchmarking",
+          "Circuit optimization",
+          "Advanced Qiskit transpilation",
+          "Quantum volume metrics"
+        ]
       }
     ]
   },
   {
     "date": "2025-10-25",
     "day": "Day 5",
-    "title": "Convergence @ RGUKT Srikakulam",
-    "theme": "Coming Together for Quantum Excellence",
+    "title": "Hackathon Day 1 @ RGUKT Srikakulam",
+    "theme": "Innovation Kickoff - Challenge Selection",
     "sessions": [
       {
         "id": 17,
-        "time": "9:00 AM - 12:00 PM",
-        "title": "Convergence & Registration for Hackathon",
-        "type": "registration",
+        "time": "9:00 AM - 10:00 AM",
+        "title": "Hackathon Prompt Presentations",
+        "type": "hackathon",
         "location": "Main Auditorium",
-        "description": "Participants from all campuses converge; registration and team formation for multidisciplinary hackathon"
+        "description": "Introduction of hackathon challenges"
       },
       {
         "id": 18,
-        "time": "11:00 AM - 12:00 PM",
-        "title": "Panel 4: Future of Quantum Education",
-        "type": "panel",
+        "time": "10:15 AM - 12:00 PM",
+        "title": "Team Formation & Challenge Selection",
+        "type": "hackathon",
         "location": "Main Auditorium",
-        "description": "Discussing the future roadmap of quantum education in India"
+        "description": "Team building and challenge selection"
       },
       {
         "id": 19,
-        "time": "2:00 PM - 6:00 PM",
-        "title": "Pre-hackathon Workshops & Mentorship",
-        "type": "workshop",
-        "location": "Labs & Innovation Hub",
-        "description": "Pre-hackathon preparation: environment setup, mentorship sessions, and resource allocation"
+        "time": "1:00 PM - 5:00 PM",
+        "title": "Project Planning & Initial Development",
+        "type": "hackathon",
+        "location": "Labs",
+        "description": "Challenge brainstorming, scope definition, early prototyping"
       },
       {
         "id": 20,
-        "time": "7:00 PM - 9:00 PM",
-        "title": "Welcome Dinner & Hackathon Theme Announcement",
-        "type": "social",
+        "time": "6:00 PM - 7:00 PM",
+        "title": "Progress Review & Cross-Team Learning",
+        "type": "presentation",
         "location": "Main Auditorium",
-        "description": "Team bonding activities, welcome dinner, and unveiling of hackathon theme"
+        "description": "Team progress presentations and discussions"
+      },
+      {
+        "id": 21,
+        "time": "7:00 PM - 8:00 PM",
+        "title": "Evening Development Session",
+        "type": "hackathon",
+        "location": "Labs",
+        "description": "Continued development, mentor support"
+      },
+      {
+        "id": 22,
+        "time": "Parallel Challenge",
+        "title": "Quantum Circuit Optimization (Non-Hackathon)",
+        "type": "competition",
+        "location": "Virtual",
+        "description": "Design and optimize circuits in IBM Quantum Composer",
+        "focusAreas": [
+          "Circuit depth minimization",
+          "Gate count reduction",
+          "Noise-aware design",
+          "Transpilation optimization",
+          "Hardware-efficient implementations",
+          "Error mitigation"
+        ],
+        "tools": [
+          "IBM Quantum Composer",
+          "IBM Quantum Experience",
+          "Qiskit optimization libraries"
+        ]
       }
     ]
   },
   {
     "date": "2025-10-26",
     "day": "Day 6",
-    "title": "Hackathon Day 1 @ RGUKT Srikakulam",
-    "theme": "48-Hour Quantum Challenge",
+    "title": "Hackathon Day 2 @ RGUKT Srikakulam",
+    "theme": "Deep Development & Innovation",
     "sessions": [
       {
-        "id": 21,
-        "time": "9:00 AM - 11:00 PM",
-        "title": "Hackathon Day 1",
+        "id": 23,
+        "time": "9:00 AM - 10:00 PM",
+        "title": "All Day Hackathon Development",
         "type": "hackathon",
         "location": "Innovation Hub",
-        "description": "Full day hackathon coding and development",
         "subSessions": [
           {
-            "id": "21a",
+            "id": "23a",
             "time": "9:00 AM - 10:00 AM",
-            "title": "Hackathon Inauguration & Rules",
-            "type": "ceremony",
-            "location": "Innovation Hub",
-            "description": "Formal inauguration and explanation of hackathon rules"
+            "title": "Team Check Up",
+            "description": "Mentor meetings and technical support"
           },
           {
-            "id": "21b",
-            "time": "10:00 AM - 12:00 PM",
-            "title": "Ideation & Planning",
-            "type": "hackathon",
-            "location": "Innovation Hub",
-            "description": "Team ideation and project planning phase"
+            "id": "23b",
+            "time": "10:00 AM - 1:00 PM",
+            "title": "Development Phase 2",
+            "description": "Core algorithm implementation and validation"
           },
           {
-            "id": "21c",
-            "time": "12:00 PM - 8:00 PM",
-            "title": "Development Phase 1",
-            "type": "hackathon",
-            "location": "Innovation Hub",
-            "description": "Initial development and coding"
+            "id": "23c",
+            "time": "2:00 PM - 6:00 PM",
+            "title": "Development Phase 3",
+            "description": "Feature implementation and optimization"
           },
           {
-            "id": "21d",
-            "time": "8:00 PM - 9:00 PM",
-            "title": "Dinner & Networking",
-            "type": "social",
-            "location": "Cafeteria",
-            "description": "Evening meal with participants"
-          },
-          {
-            "id": "21e",
-            "time": "9:00 PM - 11:00 PM",
-            "title": "Late-night Coding Session",
-            "type": "hackathon",
-            "location": "Innovation Hub",
-            "description": "Night-long collaboration and coding"
-          }
-        ]
-      },
-      {
-        "id": 22,
-        "time": "Parallel Activities",
-        "title": "Non-coding Engagements",
-        "type": "competition",
-        "subSessions": [
-          {
-            "id": "22a",
-            "time": "All Day",
-            "title": "Quantum Art Competition",
-            "type": "competition",
-            "location": "Campus Grounds",
-            "description": "Creative competition blending art and quantum themes"
-          },
-          {
-            "id": "22b",
-            "time": "All Day",
-            "title": "Technical Writing Workshop",
-            "type": "workshop",
-            "location": "Seminar Hall",
-            "description": "Workshop focused on writing research and technical papers"
-          },
-          {
-            "id": "22c",
-            "time": "All Day",
-            "title": "Community Building Sessions",
-            "type": "social",
-            "location": "Campus Grounds",
-            "description": "Interactive community engagement activities"
+            "id": "23d",
+            "time": "7:00 PM - 10:00 PM",
+            "title": "Evening Debugging & Development",
+            "description": "Final bug fixes and preparation"
           }
         ]
       }
@@ -406,64 +354,70 @@
   {
     "date": "2025-10-27",
     "day": "Day 7",
-    "title": "Hackathon Finale & Closing",
-    "theme": "Celebrating Quantum Achievements",
+    "title": "Hackathon Finale & Closing @ RGUKT Srikakulam",
+    "theme": "Showcasing Quantum Innovation",
     "sessions": [
       {
-        "id": 23,
-        "time": "9:00 AM - 1:00 PM",
-        "title": "Final Development Phase",
+        "id": 24,
+        "time": "9:00 AM - 11:00 AM",
+        "title": "Final Development & Submission",
         "type": "hackathon",
         "location": "Innovation Hub",
-        "description": "Final coding and project preparation"
-      },
-      {
-        "id": 24,
-        "time": "1:00 PM - 2:00 PM",
-        "title": "Lunch Break",
-        "type": "break",
-        "location": "Cafeteria",
-        "description": "Lunch before presentations"
+        "description": "Final project development and submission"
       },
       {
         "id": 25,
-        "time": "2:00 PM - 4:00 PM",
-        "title": "Project Presentations",
-        "type": "presentation",
+        "time": "11:00 AM - 12:00 PM",
+        "title": "Closing Ceremony (Part 1)",
+        "type": "ceremony",
         "location": "Main Auditorium",
-        "description": "Teams present their final projects"
+        "description": "Introduction of judging panel, start of presentations"
       },
       {
         "id": 26,
-        "time": "4:30 PM - 5:30 PM",
-        "title": "Judging & Deliberation",
-        "type": "ceremony",
-        "location": "Main Auditorium",
-        "description": "Judges evaluate projects and decide winners"
+        "time": "12:00 PM - 1:00 PM",
+        "title": "Lunch Break",
+        "type": "break",
+        "location": "Cafeteria",
+        "description": "Lunch before project demos"
       },
       {
         "id": 27,
-        "time": "5:30 PM - 6:30 PM",
-        "title": "Results Announcement & Awards",
-        "type": "ceremony",
+        "time": "1:00 PM - 4:00 PM",
+        "title": "Project Demonstrations",
+        "type": "presentation",
         "location": "Main Auditorium",
-        "description": "Announcement of winners and distribution of prizes"
+        "description": "Team challenge presentations",
+        "challenges": [
+          "Cleveland Clinic Challenge",
+          "RPI Challenge",
+          "Mila/Quantela/AMF Challenge",
+          "Global Data Quantum/Exaion Challenge"
+        ]
       },
       {
         "id": 28,
-        "time": "6:30 PM - 7:30 PM",
-        "title": "Closing Ceremony",
+        "time": "4:15 PM - 5:30 PM",
+        "title": "Awards & Recognition",
         "type": "ceremony",
         "location": "Main Auditorium",
-        "description": "Celebration of achievements and presentation of RGUKT Quantum Club roadmap"
+        "description": "Winner announcements and industry awards"
       },
       {
         "id": 29,
-        "time": "7:30 PM - 8:30 PM",
-        "title": "Farewell Dinner",
-        "type": "social",
-        "location": "Cafeteria",
-        "description": "Concluding dinner with participants, mentors, and guests"
+        "time": "5:30 PM - 6:00 PM",
+        "title": "Future Roadmap & Networking",
+        "type": "presentation",
+        "location": "Main Auditorium",
+        "description": "Future roadmap of RGUKT Quantum Club"
+      },
+      {
+        "id": 30,
+        "time": "6:00 PM - 8:00 PM",
+        "title": "Closing Ceremony with Quantum Arts",
+        "type": "ceremony",
+        "location": "Main Auditorium",
+        "description": "Quantum music and poetry performances"
       }
     ]
   }

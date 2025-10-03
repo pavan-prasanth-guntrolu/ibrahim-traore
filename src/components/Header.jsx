@@ -158,7 +158,7 @@ const Header = () => {
 
           {/* Action Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
-            {!user && (
+            {user && (
               <Link to="/register">
                 <button className="btn-quantum px-4 py-2 text-primary-foreground rounded-lg shadow-md relative group animate-pulse-glow">
                   <span className="relative z-10">Register</span>
@@ -171,13 +171,17 @@ const Header = () => {
                 onClick={signOut}
                 className="px-4 py-2 glass-card border border-white/20 hover:border-primary/50 rounded-lg shadow-md relative group"
               >
-                <span className="relative z-10 bg-gradient-to-r from-quantum-blue to-quantum-purple bg-clip-text text-transparent">Sign Out</span>
+                <span className="relative z-10 bg-gradient-to-r from-quantum-blue to-quantum-purple bg-clip-text text-transparent">
+                  Sign Out
+                </span>
                 <span className="absolute inset-0 bg-white/5 rounded-lg opacity-0 group-hover:opacity-30 transition-opacity"></span>
               </button>
             ) : (
               <Link to="/login">
                 <button className="px-4 py-2 glass-card border border-white/20 hover:border-primary/50 rounded-lg shadow-md relative group">
-                  <span className="relative z-10 bg-gradient-to-r from-quantum-blue to-quantum-purple bg-clip-text text-transparent">Sign In</span>
+                  <span className="relative z-10 bg-gradient-to-r from-quantum-blue to-quantum-purple bg-clip-text text-transparent">
+                    Sign In
+                  </span>
                   <span className="absolute inset-0 bg-white/5 rounded-lg opacity-0 group-hover:opacity-30 transition-opacity"></span>
                 </button>
               </Link>
@@ -190,7 +194,11 @@ const Header = () => {
             className="lg:hidden p-2 rounded-full glass-card border border-white/20 hover:border-primary/50 shadow-md relative group"
           >
             <span className="relative z-10 text-primary">
-              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {isMobileMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
             </span>
             <span className="absolute inset-0 bg-white/5 rounded-full opacity-0 group-hover:opacity-30 transition-opacity"></span>
           </button>
@@ -282,13 +290,17 @@ const Header = () => {
                   }}
                   className="w-full px-3 py-2 glass-card border border-white/20 hover:border-primary/50 rounded-lg shadow-md relative group"
                 >
-                  <span className="relative z-10 bg-gradient-to-r from-quantum-blue to-quantum-purple bg-clip-text text-transparent">Sign Out</span>
+                  <span className="relative z-10 bg-gradient-to-r from-quantum-blue to-quantum-purple bg-clip-text text-transparent">
+                    Sign Out
+                  </span>
                   <span className="absolute inset-0 bg-white/5 rounded-lg opacity-0 group-hover:opacity-30 transition-opacity"></span>
                 </button>
               ) : (
                 <Link to="/login" onClick={() => setIsMobileMenuOpen(false)}>
                   <button className="w-full px-3 py-2 glass-card border border-white/20 hover:border-primary/50 rounded-lg shadow-md relative group">
-                    <span className="relative z-10 bg-gradient-to-r from-quantum-blue to-quantum-purple bg-clip-text text-transparent">Sign In</span>
+                    <span className="relative z-10 bg-gradient-to-r from-quantum-blue to-quantum-purple bg-clip-text text-transparent">
+                      Sign In
+                    </span>
                     <span className="absolute inset-0 bg-white/5 rounded-lg opacity-0 group-hover:opacity-30 transition-opacity"></span>
                   </button>
                 </Link>

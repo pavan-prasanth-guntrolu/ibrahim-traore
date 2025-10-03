@@ -153,21 +153,23 @@ const Register = () => {
       }
 
       // Insert registration
-      const { error: registrationError } = await supabase.from("registrations").insert([
-        {
-          user_id: authData.user.id,
-          fullName: formData.fullName,
-          email: formData.email,
-          phone: formData.phone,
-          institution: formData.institution,
-          year: formData.year,
-          branch: formData.branch,
-          experience: formData.experience,
-          motivation: formData.motivation,
-          referral_code: referralCode,
-          referred_by: referredBy,
-        },
-      ]);
+      const { error: registrationError } = await supabase
+        .from("registrations")
+        .insert([
+          {
+            user_id: authData.user.id,
+            fullName: formData.fullName,
+            email: formData.email,
+            phone: formData.phone,
+            institution: formData.institution,
+            year: formData.year,
+            branch: formData.branch,
+            experience: formData.experience,
+            motivation: formData.motivation,
+            referral_code: referralCode,
+            referred_by: referredBy,
+          },
+        ]);
 
       if (registrationError) {
         throw registrationError;
@@ -176,13 +178,16 @@ const Register = () => {
       setIsSubmitted(true);
       toast({
         title: "Registration Successful!",
-        description: "Please check your email to confirm your account, then sign in.",
+        description:
+          "Please check your email to confirm your account, then sign in.",
       });
     } catch (error) {
       console.error("Error submitting registration:", error);
       toast({
         title: "Registration Failed",
-        description: error.message || "An error occurred while registering. Please try again.",
+        description:
+          error.message ||
+          "An error occurred while registering. Please try again.",
         variant: "destructive",
       });
     } finally {
@@ -331,7 +336,9 @@ const Register = () => {
                   </div>
 
                   <div>
-                    <Label htmlFor="referralCode">Referral Code (Optional)</Label>
+                    <Label htmlFor="referralCode">
+                      Referral Code (Optional)
+                    </Label>
                     <Input
                       id="referralCode"
                       type="text"
@@ -552,9 +559,25 @@ const Register = () => {
                   <span className="relative z-10">
                     {isSubmitting ? (
                       <span className="flex items-center justify-center">
-                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        <svg
+                          className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                          ></circle>
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                          ></path>
                         </svg>
                         Registering...
                       </span>

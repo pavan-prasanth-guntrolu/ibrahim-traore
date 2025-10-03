@@ -117,7 +117,7 @@ const Home = () => {
 
               {/* Countdown Timer */}
               <div className="mb-8">
-                <motion.h2 
+                <motion.h2
                   className="text-lg text-muted-foreground mb-4"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -137,7 +137,7 @@ const Home = () => {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-                {!user && (
+                {user && (
                   <Link to="/register">
                     <Button
                       size="lg"
@@ -155,7 +155,9 @@ const Home = () => {
                     size="lg"
                     className="px-8 py-4 text-lg font-semibold rounded-lg glass-card border border-white/20 hover:border-primary/50 shadow-lg relative group"
                   >
-                    <span className="relative z-10 bg-gradient-to-r from-quantum-blue to-quantum-purple bg-clip-text text-transparent">View Schedule</span>
+                    <span className="relative z-10 bg-gradient-to-r from-quantum-blue to-quantum-purple bg-clip-text text-transparent">
+                      View Schedule
+                    </span>
                     <span className="absolute inset-0 bg-white/5 rounded-lg opacity-0 group-hover:opacity-30 transition-opacity"></span>
                   </Button>
                 </Link>
@@ -231,9 +233,9 @@ const Home = () => {
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
               Qiskit Fall Fest is a global student-run series of quantum
-              computing events supported by IBM Quantum. RGUKT Srikakulam's edition
-              brings hands-on workshops, guided Jupyter notebooks, and a campus
-              hackathon to help students build practical Qiskit skills.
+              computing events supported by IBM Quantum. RGUKT Srikakulam's
+              edition brings hands-on workshops, guided Jupyter notebooks, and a
+              campus hackathon to help students build practical Qiskit skills.
             </p>
           </motion.div>
 
