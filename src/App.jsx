@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { AnimatePresence, motion, useScroll } from "framer-motion";
 import { AuthProvider } from "@/components/AuthProvider";
+import { supabase } from "@/lib/supabase";
 
 // Core components
 import Header from "@/components/Header";
@@ -34,6 +35,7 @@ const Login = lazy(() => import("@/pages/Login"));
 const Refer = lazy(() => import("@/pages/Refer"));
 const Team = lazy(() => import("@/pages/Team"));
 const Supporters = lazy(() => import("@/pages/Supporters"));
+const Secret = lazy(() => import("@/pages/Secret"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -66,6 +68,37 @@ const App = () => {
     };
   }, []);
 
+  const [isAdmin, setIsAdmin] = useState(true);
+
+  useEffect(() => {
+    const checkAdmin = async () => {
+      const { data: user } = await supabase.auth.getUser();
+      if (
+        user &&
+        (user.email === "pavanprasanth48850@gmail.com" ||
+          user.email === "nikkikatnikkil44@gmail.com" ||
+          user.email === "s210214@rguktsklm.ac.in" ||
+          user.email === "johnrajuch6@gmail.com" ||
+          user.email === "kasimvalinspl@gmail.com" ||
+          user.email === "nikkikatnikkil44@gmail.com" ||
+          user.email === "prabhasvemula7@gmail.com" ||
+          user.email === "neesh235@gmail.com" ||
+          user.email === "anushasanapathi549@gmail.com" ||
+          user.email === "veerarohit789@gmail.com" ||
+          user.email === "s220083@rguktsklm.ac.in" ||
+          user.email === "s220505@rguktsklm.ac.in" ||
+          user.email === "s220556@rguktsklm.ac.in" ||
+          user.email === "s210664@rguktsklm.ac.in" ||
+          user.email === "praveen14641@gmail.com" ||
+          user.email === "johnbabuchaduvula0@gmail.com")
+      ) {
+        setIsAdmin(true);
+      }
+    };
+
+    checkAdmin();
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider defaultTheme="dark" storageKey="qiskit-fest-theme">
@@ -90,6 +123,9 @@ const App = () => {
                         <Route path="/team" element={<Team />} />
                         <Route path="/hackathon" element={<Hackathon />} />
                         <Route path="/materials" element={<Materials />} />
+                        {isAdmin && (
+                          <Route path="/secret" element={<Secret />} />
+                        )}
                         <Route path="/sponsors" element={<Sponsors />} />
                         <Route path="/organizers" element={<Organizers />} />
                         <Route path="/supporters" element={<Supporters />} />
