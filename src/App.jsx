@@ -73,24 +73,26 @@ const App = () => {
   useEffect(() => {
     const checkAdmin = async () => {
       const { data: user } = await supabase.auth.getUser();
+      console.log("User Data:", user.user.email);
       if (
-        user &&
-        (user.email === "pavanprasanth48850@gmail.com" ||
-          user.email === "nikkikatnikkil44@gmail.com" ||
-          user.email === "s210214@rguktsklm.ac.in" ||
-          user.email === "johnrajuch6@gmail.com" ||
-          user.email === "kasimvalinspl@gmail.com" ||
-          user.email === "nikkikatnikkil44@gmail.com" ||
-          user.email === "prabhasvemula7@gmail.com" ||
-          user.email === "neesh235@gmail.com" ||
-          user.email === "anushasanapathi549@gmail.com" ||
-          user.email === "veerarohit789@gmail.com" ||
-          user.email === "s220083@rguktsklm.ac.in" ||
-          user.email === "s220505@rguktsklm.ac.in" ||
-          user.email === "s220556@rguktsklm.ac.in" ||
-          user.email === "s210664@rguktsklm.ac.in" ||
-          user.email === "praveen14641@gmail.com" ||
-          user.email === "johnbabuchaduvula0@gmail.com")
+        [
+          "pavanprasanth48850@gmail.com",
+          "nikkikatnikkil44@gmail.com",
+          "s210214@rguktsklm.ac.in",
+          "johnrajuch6@gmail.com",
+          "kasimvalinspl@gmail.com",
+          "prabhasvemula7@gmail.com",
+          "neesh235@gmail.com",
+          "anushasanapathi549@gmail.com",
+          "veerarohit789@gmail.com",
+          "s220083@rguktsklm.ac.in",
+          "s220505@rguktsklm.ac.in",
+          "s220556@rguktsklm.ac.in",
+          "s210664@rguktsklm.ac.in",
+          "praveen14641@gmail.com",
+          "johnbabuchaduvula0@gmail.com",
+          "s210755@rguktsklm.ac.in",
+        ].includes(user.user.email.toLowerCase())
       ) {
         setIsAdmin(true);
       }
@@ -123,9 +125,23 @@ const App = () => {
                         <Route path="/team" element={<Team />} />
                         <Route path="/hackathon" element={<Hackathon />} />
                         <Route path="/materials" element={<Materials />} />
-                        {isAdmin && (
-                          <Route path="/secret" element={<Secret />} />
-                        )}
+                        <Route
+                          path="/secret"
+                          element={
+                            isAdmin ? (
+                              <Secret />
+                            ) : (
+                              <div className="min-h-screen flex items-center justify-center bg-background text-primary-foreground text-white">
+                                <h1 className="text-4xl font-bold">
+                                  Access Denied
+                                </h1>
+                                <p className="text-lg mt-4">
+                                  You do not have permission to view this page.
+                                </p>
+                              </div>
+                            )
+                          }
+                        />
                         <Route path="/sponsors" element={<Sponsors />} />
                         <Route path="/organizers" element={<Organizers />} />
                         <Route path="/supporters" element={<Supporters />} />
