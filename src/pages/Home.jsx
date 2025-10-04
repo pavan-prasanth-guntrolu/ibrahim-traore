@@ -16,12 +16,31 @@ import LoadingSpinner from "@/components/LoadingSpinner";
 import CountdownTimer from "@/components/CountdownTimer";
 import Cat_01 from "../../Graphics/Emojis/Cat_01.png";
 import centuryImg from "../../Graphics/Emojis/Text_Theme_01.png";
-
+import { supabase } from "@/lib/supabase";
+import { useState, useEffect } from "react";
 // Lazy load the 3D component for better performance
 const Hero3D = lazy(() => import("@/components/Hero3D"));
 
 const Home = () => {
   const { user } = useAuth();
+  const [registrationCount, setRegistrationCount] = useState(0);
+  useEffect(() => {
+    const fetchRegistrationCount = async () => {
+      try {
+        const { count, error } = await supabase
+          .from("registrations")
+          .select("*", { count: "exact", head: true }); // head:true avoids fetching rows
+
+        if (error) throw error;
+
+        setRegistrationCount(count || 0);
+      } catch (err) {
+        console.error("Failed to fetch registration count:", err.message);
+      }
+    };
+
+    fetchRegistrationCount();
+  }, []);
 
   const features = [
     {
@@ -59,6 +78,7 @@ const Home = () => {
     { label: "Expert Speakers", value: "10+" },
     { label: "Hands-on Workshops", value: "10+" },
     { label: "Quantum Notebooks", value: "15" },
+    { label: "Registrations", value: registrationCount },
   ];
 
   return (
@@ -165,7 +185,15 @@ const Home = () => {
 
               {/* Stats */}
               <motion.div
-                className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-2xl mx-auto"
+                className="
+    grid 
+    grid-cols-1 
+    sm:grid-cols-2 
+    lg:grid-cols-5 
+    gap-6 
+    max-w-5xl 
+    mx-auto
+  "
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
@@ -173,7 +201,18 @@ const Home = () => {
                 {stats.map((stat, index) => (
                   <motion.div
                     key={stat.label}
-                    className="text-center glass-card p-4 rounded-xl border "
+                    className={`
+        text-center 
+        glass-card 
+        p-4 
+        rounded-xl 
+        border 
+        ${
+          index === stats.length - 1 && stats.length % 2 !== 0
+            ? "sm:col-span-2 sm:mx-auto lg:col-auto lg:mx-0"
+            : ""
+        }
+      `}
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.2 }}
                   >
