@@ -14,7 +14,7 @@ const About = () => {
       icon: Users,
       title: "Student-Led",
       description:
-        "Organized by passionate students at Rgukt Srikakulam who are enthusiastic about quantum computing.",
+        "Organized by passionate students at RGUKT Srikakulam who are enthusiastic about quantum computing.",
     },
     {
       icon: BookOpen,
@@ -46,7 +46,7 @@ const About = () => {
     "Introduce students to quantum computing concepts and Qiskit framework",
     "Provide hands-on experience with quantum algorithms and applications",
     "Foster collaboration and innovation through hackathon challenges",
-    "Build a strong quantum computing community at Rgukt Srikakulam",
+    "Build a strong quantum computing community at RGUKT Srikakulam",
     "Connect students with quantum computing professionals and researchers",
     "Prepare students for careers in quantum technology and research",
   ];
@@ -97,7 +97,7 @@ const About = () => {
               <div className="prose prose-lg max-w-none">
                 <p className="text-muted-foreground leading-relaxed mb-6">
                   Qiskit Fall Fest is a global student-run series of quantum
-                  computing events supported by IBM Quantum. Rgukt Srikakulam
+                  computing events supported by IBM Quantum. RGUKT Srikakulam
                   edition brings hands-on workshops, guided Jupyter notebooks,
                   and a campus hackathon to help students build practical Qiskit
                   skills.

@@ -52,15 +52,15 @@ const Header = () => {
       ],
     },
     { name: "Sponsors", href: "/sponsors" },
-    { name: "Contact", href: "/contact" },
-    { name: "Supporters", href: "/supporters" },
+    { name: "Our Team", href: "/team" }, // Swapped with Supporters
+    { name: "Supporters", href: "/supporters" }, // Swapped with Our Team
     ...(user ? [{ name: "Refer", href: "/refer" }] : []),
 
     {
       name: "About Us",
       dropdown: [
         { name: "About", href: "/about" },
-        { name: "Our Team", href: "/team" },
+        { name: "Contact", href: "/contact" },
       ],
     },
   ];
@@ -105,7 +105,7 @@ const Header = () => {
                         prev === item.name ? null : item.name
                       )
                     }
-                    className="flex items-center space-x-1 text-sm font-medium hover:text-primary focus:outline-none"
+                    className="flex items-center space-x-1 text-sm font-medium text-white hover:text-primary focus:outline-none"
                   >
                     <span>{item.name}</span>
                     <ChevronDown
@@ -116,7 +116,7 @@ const Header = () => {
                     />
                   </button>
 
-                  {/* Animated Dropdown */}
+                  {/* Transparent Dropdown with Blur */}
                   <AnimatePresence>
                     {openDropdown === item.name && (
                       <motion.div
@@ -124,14 +124,14 @@ const Header = () => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -5 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute left-0 mt-2 min-w-[220px] bg-background border border-white/10 rounded-lg shadow-lg z-50 pt-2"
+                        className="absolute left-0 mt-2 min-w-[220px] bg-white/10 backdrop-blur-md border border-white/10 rounded-lg shadow-lg z-50 pt-2"
                       >
                         {item.dropdown.map((subItem) => (
                           <Link
                             key={subItem.name}
                             to={subItem.href}
                             onClick={() => setOpenDropdown(null)}
-                            className="block px-4 py-2 text-sm text-muted-foreground hover:bg-primary/10 hover:text-primary"
+                            className="block px-4 py-2 text-sm text-white hover:bg-primary/10 hover:text-primary"
                           >
                             {subItem.name}
                           </Link>
@@ -147,7 +147,7 @@ const Header = () => {
                   className={`text-sm font-medium ${
                     isActive(item.href)
                       ? "text-primary"
-                      : "text-muted-foreground hover:text-primary"
+                      : "text-white hover:text-primary"
                   }`}
                 >
                   {item.name}
@@ -158,31 +158,25 @@ const Header = () => {
 
           {/* Action Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
-            {user && (
-              <Link to="/register">
-                <button className="btn-quantum px-4 py-2 text-primary-foreground rounded-lg shadow-md relative group animate-pulse-glow">
-                  <span className="relative z-10">Register</span>
-                  <span className="absolute inset-0 bg-white/10 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity"></span>
-                </button>
-              </Link>
-            )}
+            <Link to="/register">
+              <button className="btn-quantum px-4 py-2 text-primary-foreground rounded-lg shadow-md relative group animate-pulse-glow">
+                <span className="relative z-10">Register</span>
+                <span className="absolute inset-0 bg-white/10 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity"></span>
+              </button>
+            </Link>
             {user ? (
               <button
                 onClick={signOut}
-                className="px-4 py-2 glass-card border border-white/20 hover:border-primary/50 rounded-lg shadow-md relative group"
+                className="btn-quantum px-4 py-2 text-primary-foreground rounded-lg shadow-md relative group animate-pulse-glow"
               >
-                <span className="relative z-10 bg-gradient-to-r from-quantum-blue to-quantum-purple bg-clip-text text-transparent">
-                  Sign Out
-                </span>
-                <span className="absolute inset-0 bg-white/5 rounded-lg opacity-0 group-hover:opacity-30 transition-opacity"></span>
+                <span className="relative z-10">Sign Out</span>
+                <span className="absolute inset-0 bg-white/10 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity"></span>
               </button>
             ) : (
               <Link to="/login">
-                <button className="px-4 py-2 glass-card border border-white/20 hover:border-primary/50 rounded-lg shadow-md relative group">
-                  <span className="relative z-10 bg-gradient-to-r from-quantum-blue to-quantum-purple bg-clip-text text-transparent">
-                    Sign In
-                  </span>
-                  <span className="absolute inset-0 bg-white/5 rounded-lg opacity-0 group-hover:opacity-30 transition-opacity"></span>
+                <button className="btn-quantum px-4 py-2 text-primary-foreground rounded-lg shadow-md relative group animate-pulse-glow">
+                  <span className="relative z-10">Sign In</span>
+                  <span className="absolute inset-0 bg-white/10 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity"></span>
                 </button>
               </Link>
             )}
@@ -274,34 +268,30 @@ const Header = () => {
                 )
               )}
 
-              {!user && (
+              {
                 <Link to="/register" onClick={() => setIsMobileMenuOpen(false)}>
                   <button className="w-full btn-quantum px-3 py-2 text-primary-foreground rounded-lg shadow-md relative group animate-pulse-glow">
                     <span className="relative z-10">Register</span>
                     <span className="absolute inset-0 bg-white/10 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity"></span>
                   </button>
                 </Link>
-              )}
+              }
               {user ? (
                 <button
                   onClick={() => {
                     signOut();
                     setIsMobileMenuOpen(false);
                   }}
-                  className="w-full px-3 py-2 glass-card border border-white/20 hover:border-primary/50 rounded-lg shadow-md relative group"
+                  className="w-full btn-quantum px-3 py-2 text-primary-foreground rounded-lg shadow-md relative group animate-pulse-glow"
                 >
-                  <span className="relative z-10 bg-gradient-to-r from-quantum-blue to-quantum-purple bg-clip-text text-transparent">
-                    Sign Out
-                  </span>
-                  <span className="absolute inset-0 bg-white/5 rounded-lg opacity-0 group-hover:opacity-30 transition-opacity"></span>
+                  <span className="relative z-10">Sign Out</span>
+                  <span className="absolute inset-0 bg-white/10 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity"></span>
                 </button>
               ) : (
                 <Link to="/login" onClick={() => setIsMobileMenuOpen(false)}>
-                  <button className="w-full px-3 py-2 glass-card border border-white/20 hover:border-primary/50 rounded-lg shadow-md relative group">
-                    <span className="relative z-10 bg-gradient-to-r from-quantum-blue to-quantum-purple bg-clip-text text-transparent">
-                      Sign In
-                    </span>
-                    <span className="absolute inset-0 bg-white/5 rounded-lg opacity-0 group-hover:opacity-30 transition-opacity"></span>
+                  <button className="w-full btn-quantum px-3 py-2 text-primary-foreground rounded-lg shadow-md relative group animate-pulse-glow">
+                    <span className="relative z-10">Sign In</span>
+                    <span className="absolute inset-0 bg-white/10 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity"></span>
                   </button>
                 </Link>
               )}

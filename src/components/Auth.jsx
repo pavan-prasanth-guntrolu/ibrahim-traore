@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabase";
 import { motion } from "framer-motion";
 import { Mail, Lock, ArrowRight } from "lucide-react";
@@ -14,14 +14,32 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
+import { useNavigate } from "react-router-dom";
 
-const AuthComponent = ({ onSignIn }) => {
+const AuthComponent = () => {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [authError, setAuthError] = useState(null);
   const [mode, setMode] = useState("signin"); // signin or signup
   const { toast } = useToast();
+
+  useEffect(() => {
+    // Listen for auth state changes
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((event, session) => {
+      // This listener will trigger on SIGNED_IN, SIGNED_OUT, PASSWORD_RECOVERY, etc.
+      if (event === "SIGNED_IN" && session) {
+        navigate("/register");
+      }
+    }); // Clean up the listener on component unmount
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, [navigate]); // Re-run effect if navigate function changes
 
   const handleAuth = async (e) => {
     e.preventDefault();
@@ -30,22 +48,13 @@ const AuthComponent = ({ onSignIn }) => {
 
     try {
       let result;
-
       if (mode === "signin") {
-        result = await supabase.auth.signInWithPassword({
-          email,
-          password,
-        });
+        result = await supabase.auth.signInWithPassword({ email, password });
       } else {
-        result = await supabase.auth.signUp({
-          email,
-          password,
-        });
+        result = await supabase.auth.signUp({ email, password });
       }
 
-      if (result.error) {
-        throw result.error;
-      }
+      if (result.error) throw result.error;
 
       if (mode === "signup") {
         toast({
@@ -54,7 +63,6 @@ const AuthComponent = ({ onSignIn }) => {
         });
       }
     } catch (error) {
-      console.error("Auth error:", error);
       setAuthError(error.message);
     } finally {
       setLoading(false);
@@ -71,15 +79,13 @@ const AuthComponent = ({ onSignIn }) => {
         options: {
           redirectTo:
             process.env.NODE_ENV === "development"
-              ? "http://localhost:8080"
-              : "https://quantum.rgukt.in",
+              ? "http://localhost:8080/"
+              : "https://quantum.rgukt.in/",
         },
       });
-      if (error) {
-        throw error;
-      }
+
+      if (error) throw error;
     } catch (error) {
-      console.error("Google login error:", error);
       setAuthError(error.message);
     } finally {
       setLoading(false);
@@ -97,13 +103,17 @@ const AuthComponent = ({ onSignIn }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
+      {" "}
       <Card className="w-full max-w-md mx-auto glass-card border border-white/10 shadow-xl">
+        {" "}
         <CardHeader>
+          {" "}
           <CardTitle className="text-center text-2xl font-bold">
-            {mode === "signin" ? "Sign In" : "Create Account"}
-          </CardTitle>
-        </CardHeader>
+            {mode === "signin" ? "Sign In" : "Create Account"}{" "}
+          </CardTitle>{" "}
+        </CardHeader>{" "}
         <CardContent>
+          {" "}
           {authError && (
             <motion.div
               className="mb-6 p-4 bg-destructive/10 border border-destructive/20 text-destructive rounded-lg"
@@ -111,20 +121,23 @@ const AuthComponent = ({ onSignIn }) => {
               animate={{ opacity: 1, height: "auto" }}
               transition={{ duration: 0.3 }}
             >
-              {authError}
+              {authError}{" "}
             </motion.div>
-          )}
-
+          )}{" "}
           <form onSubmit={handleAuth} className="space-y-6">
+            {" "}
             <div className="space-y-4">
+              {" "}
               <div className="space-y-2">
+                {" "}
                 <Label
                   htmlFor="email"
                   className="text-sm font-medium flex items-center"
                 >
+                  {" "}
                   <Mail className="h-4 w-4 mr-2 text-primary" />
-                  Email Address
-                </Label>
+                  Email Address{" "}
+                </Label>{" "}
                 <Input
                   id="email"
                   type="email"
@@ -133,17 +146,18 @@ const AuthComponent = ({ onSignIn }) => {
                   placeholder="your.email@example.com"
                   required
                   className="bg-background/50 border-white/20 focus:border-primary"
-                />
-              </div>
-
+                />{" "}
+              </div>{" "}
               <div className="space-y-2">
+                {" "}
                 <Label
                   htmlFor="password"
                   className="text-sm font-medium flex items-center"
                 >
+                  {" "}
                   <Lock className="h-4 w-4 mr-2 text-primary" />
-                  Password
-                </Label>
+                  Password{" "}
+                </Label>{" "}
                 <Input
                   id="password"
                   type="password"
@@ -157,24 +171,27 @@ const AuthComponent = ({ onSignIn }) => {
                   required
                   minLength={6}
                   className="bg-background/50 border-white/20 focus:border-primary"
-                />
-              </div>
-            </div>
-
+                />{" "}
+              </div>{" "}
+            </div>{" "}
             <Button
               type="submit"
               className="w-full btn-quantum text-primary-foreground py-3 text-lg font-semibold rounded-lg shadow-lg relative group animate-pulse-glow"
               disabled={loading}
             >
+              {" "}
               <span className="relative z-10 flex items-center justify-center">
+                {" "}
                 {loading ? (
                   <span className="flex items-center justify-center">
+                    {" "}
                     <svg
                       className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
                     >
+                      {" "}
                       <circle
                         className="opacity-25"
                         cx="12"
@@ -182,69 +199,69 @@ const AuthComponent = ({ onSignIn }) => {
                         r="10"
                         stroke="currentColor"
                         strokeWidth="4"
-                      ></circle>
+                      ></circle>{" "}
                       <path
                         className="opacity-75"
                         fill="currentColor"
                         d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                      ></path>
-                    </svg>
+                      ></path>{" "}
+                    </svg>{" "}
                     {mode === "signin"
                       ? "Signing In..."
-                      : "Creating Account..."}
+                      : "Creating Account..."}{" "}
                   </span>
                 ) : (
                   <>
-                    {mode === "signin" ? "Sign In" : "Create Account"}
-                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                    {" "}
+                    {mode === "signin" ? "Sign In" : "Create Account"}{" "}
+                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />{" "}
                   </>
-                )}
-              </span>
-              <span className="absolute inset-0 bg-white/10 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity"></span>
-            </Button>
-          </form>
-
+                )}{" "}
+              </span>{" "}
+              <span className="absolute inset-0 bg-white/10 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity"></span>{" "}
+            </Button>{" "}
+          </form>{" "}
           <div className="mt-6 flex items-center">
-            <Separator className="flex-grow" />
+            <Separator className="flex-grow" />{" "}
             <span className="px-3 text-xs text-muted-foreground">OR</span>
-            <Separator className="flex-grow" />
-          </div>
-
+            <Separator className="flex-grow" />{" "}
+          </div>{" "}
           <Button
             type="button"
-            variant="outline"
-            className="w-full mt-6 glass-card border border-white/20 hover:border-primary/50 py-3 font-medium relative group"
+            className="w-full btn-quantum text-primary-foreground py-3 text-lg font-semibold rounded-lg shadow-lg relative group animate-pulse-glow mt-4"
             onClick={handleGoogleLogin}
           >
-            <span className="relative z-10 bg-gradient-to-r from-quantum-blue to-quantum-purple bg-clip-text text-transparent">
-              Sign In with Google
-            </span>
-            <span className="absolute inset-0 bg-white/5 rounded-lg opacity-0 group-hover:opacity-30 transition-opacity"></span>
-          </Button>
-
+            {" "}
+            <span className="relative z-10 flex items-center justify-center">
+              Sign In with Google{" "}
+            </span>{" "}
+            <span className="absolute inset-0 bg-white/10 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity"></span>{" "}
+          </Button>{" "}
           <Button
             type="button"
-            variant="outline"
-            className="w-full mt-6 glass-card border border-white/20 hover:border-primary/50 py-3 font-medium relative group"
+            className="w-full btn-quantum text-primary-foreground py-3 text-lg font-semibold rounded-lg shadow-lg relative group animate-pulse-glow mt-3"
             onClick={toggleMode}
           >
-            <span className="relative z-10 bg-gradient-to-r from-quantum-blue to-quantum-purple bg-clip-text text-transparent">
+            {" "}
+            <span className="relative z-10 flex items-center justify-center">
+              {" "}
               {mode === "signin"
                 ? "Create a New Account"
-                : "Sign In with Existing Account"}
-            </span>
-            <span className="absolute inset-0 bg-white/5 rounded-lg opacity-0 group-hover:opacity-30 transition-opacity"></span>
-          </Button>
-        </CardContent>
+                : "Sign In with Existing Account"}{" "}
+            </span>{" "}
+            <span className="absolute inset-0 bg-white/10 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity"></span>{" "}
+          </Button>{" "}
+        </CardContent>{" "}
         <CardFooter className="text-center text-sm text-muted-foreground">
+          {" "}
           <p className="w-full">
             By continuing, you agree to our{" "}
             <a href="/code-of-conduct" className="text-primary hover:underline">
-              Code of Conduct
-            </a>
-          </p>
-        </CardFooter>
-      </Card>
+              Code of Conduct{" "}
+            </a>{" "}
+          </p>{" "}
+        </CardFooter>{" "}
+      </Card>{" "}
     </motion.div>
   );
 };

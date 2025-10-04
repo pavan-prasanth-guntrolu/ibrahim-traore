@@ -5,34 +5,31 @@ import {
   MapPin,
   Phone,
   Send,
-  Linkedin,
-  Twitter,
-  Youtube,
-  Instagram,
   ExternalLink,
   ArrowRight,
   CheckCircle,
-  AlertCircle
+  AlertCircle,
 } from "lucide-react";
+import { FaLinkedin, FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { supabase } from "@/lib/supabase";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null); // 'success' or 'error'
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -43,21 +40,21 @@ const Contact = () => {
 
     try {
       const { error } = await supabase
-        .from('contact_messages')
+        .from("contact_messages")
         .insert([formData]);
 
       if (error) throw error;
 
-      setSubmitStatus('success');
+      setSubmitStatus("success");
       setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
       });
     } catch (error) {
-      console.error('Error submitting form:', error);
-      setSubmitStatus('error');
+      console.error("Error submitting form:", error);
+      setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
     }
@@ -86,35 +83,36 @@ const Contact = () => {
       action: "https://maps.app.goo.gl/Eo9Jy9rXVHPQZnSt8",
     },
   ];
-  
+
   const socialLinks = [
     {
-      icon: Linkedin,
+      icon: FaLinkedin,
       name: "LinkedIn",
       url: "https://www.linkedin.com/company/rguktsklm-qff2025/",
       color: "from-blue-600 to-blue-800",
       hoverColor: "group-hover:from-blue-700 group-hover:to-blue-900",
     },
     {
-      icon: Twitter,
+      icon: FaTwitter,
       name: "X (Twitter)",
       url: "https://x.com/rguktsklm_qff25?t=biaMBN4M9_3vEKNrAH7Hxg&s=08",
       color: "from-gray-700 to-gray-900",
       hoverColor: "group-hover:from-gray-800 group-hover:to-black",
     },
     {
-      icon: Youtube,
+      icon: FaYoutube,
       name: "YouTube",
       url: "https://www.youtube.com/@rguktsklm_qff2025",
       color: "from-red-600 to-red-800",
       hoverColor: "group-hover:from-red-700 group-hover:to-red-900",
     },
     {
-      icon: Instagram,
+      icon: FaInstagram,
       name: "Instagram",
       url: "https://www.instagram.com/rguktsklm_qff2025/",
       color: "from-pink-500 via-purple-500 to-indigo-500",
-      hoverColor: "group-hover:from-pink-600 group-hover:via-purple-600 group-hover:to-indigo-600",
+      hoverColor:
+        "group-hover:from-pink-600 group-hover:via-purple-600 group-hover:to-indigo-600",
     },
   ];
 
@@ -191,33 +189,30 @@ const Contact = () => {
                 Connect With Us <span className="text-gradient">Socially</span>
               </h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {socialLinks.map((social, index) => (
-                  <motion.a
-                    key={index}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.98 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Card className="glass-card border border-white/10 overflow-hidden h-full relative">
-                      <div className={`absolute inset-0 bg-gradient-to-br ${social.color} opacity-10 transition-opacity duration-300 group-hover:opacity-20`}></div>
-                      <CardContent className="p-6 text-center relative z-10">
-                        <div className="w-12 h-12 mx-auto mb-3 flex items-center justify-center">
-                          <social.icon className={`h-8 w-8 bg-gradient-to-r ${social.color} bg-clip-text text-transparent transition-all duration-300`} />
-                        </div>
-                        <h3 className="font-semibold mb-1">{social.name}</h3>
-                        <div className="flex items-center justify-center text-xs text-muted-foreground">
-                          <span>Follow us</span>
-                          <ExternalLink className="ml-1 h-3 w-3" />
-                        </div>
-                        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r opacity-50 transition-opacity duration-300 group-hover:opacity-100 ${social.color}"></div>
-                      </CardContent>
-                    </Card>
-                  </motion.a>
-                ))}
+                {socialLinks.map((social, index) => {
+                  const SocialIcon = social.icon;
+                  return (
+                    <motion.a
+                      key={index}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.98 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Card className="glass-card border border-white/10 overflow-hidden h-full relative">
+                        <CardContent className="p-6 text-center relative z-10">
+                          <div className="w-12 h-12 mx-auto mb-3 flex items-center justify-center text-3xl text-primary">
+                            <SocialIcon />
+                          </div>
+                          <h3 className="font-semibold mb-1">{social.name}</h3>
+                        </CardContent>
+                      </Card>
+                    </motion.a>
+                  );
+                })}
               </div>
             </motion.div>
 
@@ -349,25 +344,30 @@ const Contact = () => {
                     </Button>
                   </div>
 
-                  {submitStatus === 'success' && (
+                  {submitStatus === "success" && (
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       className="mt-4 p-4 bg-green-500/10 border border-green-500/20 rounded-lg flex items-center"
                     >
                       <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
-                      <span className="text-green-700 dark:text-green-400">Message sent successfully! We'll get back to you soon.</span>
+                      <span className="text-green-700 dark:text-green-400">
+                        Message sent successfully! We'll get back to you soon.
+                      </span>
                     </motion.div>
                   )}
 
-                  {submitStatus === 'error' && (
+                  {submitStatus === "error" && (
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       className="mt-4 p-4 bg-red-500/10 border border-red-500/20 rounded-lg flex items-center"
                     >
                       <AlertCircle className="w-5 h-5 text-red-500 mr-2" />
-                      <span className="text-red-700 dark:text-red-400">Failed to send message. Please try again or contact us directly.</span>
+                      <span className="text-red-700 dark:text-red-400">
+                        Failed to send message. Please try again or contact us
+                        directly.
+                      </span>
                     </motion.div>
                   )}
                 </form>
@@ -387,11 +387,15 @@ const Contact = () => {
                     Code of <span className="text-gradient">Conduct</span>
                   </h2>
                   <p className="text-muted-foreground mb-6 leading-relaxed max-w-2xl mx-auto">
-                    We follow a zero-tolerance Code of Conduct. Respect everyone —
-                    harassment is not tolerated. Report incidents to
-                    <a href="mailto:qiskit.fallfest@rguktsklm.ac.in" className="text-primary hover:underline ml-1">
+                    We follow a zero-tolerance Code of Conduct. Respect everyone
+                    — harassment is not tolerated. Report incidents to
+                    <a
+                      href="mailto:qiskit.fallfest@rguktsklm.ac.in"
+                      className="text-primary hover:underline ml-1"
+                    >
                       qiskit.fallfest@rguktsklm.ac.in
-                    </a>.
+                    </a>
+                    .
                   </p>
                   <Button
                     variant="outline"
@@ -406,7 +410,7 @@ const Contact = () => {
                 </motion.div>
               </CardContent>
             </Card>
-            
+
             {/* FAQ Section */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -415,31 +419,43 @@ const Contact = () => {
               className="mt-12"
             >
               <h2 className="text-2xl font-bold font-poppins mb-6 text-center">
-                Frequently Asked <span className="text-gradient">Questions</span>
+                Frequently Asked{" "}
+                <span className="text-gradient">Questions</span>
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {[
                   {
                     question: "What is Qiskit Fall Fest?",
-                    answer: "Qiskit Fall Fest is a global quantum computing event series organized by students and supported by IBM Quantum. It features workshops, hackathons, and networking opportunities."
+                    answer:
+                      "Qiskit Fall Fest is a global quantum computing event series organized by students and supported by IBM Quantum. It features workshops, hackathons, and networking opportunities.",
                   },
                   {
                     question: "Do I need prior quantum computing knowledge?",
-                    answer: "No, beginners are welcome! We'll have introductory workshops to help you get started with quantum computing concepts and Qiskit."
+                    answer:
+                      "No, beginners are welcome! We'll have introductory workshops to help you get started with quantum computing concepts and Qiskit.",
                   },
                   {
                     question: "How can I participate in the hackathon?",
-                    answer: "Register for the event, attend the workshops, and form a team. Detailed hackathon rules and project submission guidelines will be provided during the event."
+                    answer:
+                      "Register for the event, attend the workshops, and form a team. Detailed hackathon rules and project submission guidelines will be provided during the event.",
                   },
                   {
                     question: "Is there a registration fee?",
-                    answer: "No, participation in Qiskit Fall Fest 2025 is completely free, thanks to our sponsors and RGUKT Srikakulam."
-                  }
+                    answer:
+                      "No, participation in Qiskit Fall Fest 2025 is completely free, thanks to our sponsors and RGUKT Srikakulam.",
+                  },
                 ].map((faq, index) => (
-                  <Card key={index} className="glass-card border border-white/10 overflow-hidden">
+                  <Card
+                    key={index}
+                    className="glass-card border border-white/10 overflow-hidden"
+                  >
                     <CardContent className="p-6">
-                      <h3 className="text-lg font-semibold mb-2 text-primary">{faq.question}</h3>
-                      <p className="text-muted-foreground text-sm">{faq.answer}</p>
+                      <h3 className="text-lg font-semibold mb-2 text-primary">
+                        {faq.question}
+                      </h3>
+                      <p className="text-muted-foreground text-sm">
+                        {faq.answer}
+                      </p>
                     </CardContent>
                   </Card>
                 ))}

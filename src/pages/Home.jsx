@@ -55,10 +55,10 @@ const Home = () => {
   ];
 
   const stats = [
-    { label: "Days of Learning", value: "-" },
-    { label: "Expert Speakers", value: "-" },
-    { label: "Hands-on Workshops", value: "-" },
-    { label: "Quantum Notebooks", value: "-" },
+    { label: "Days of Learning", value: "7" },
+    { label: "Expert Speakers", value: "10+" },
+    { label: "Hands-on Workshops", value: "10+" },
+    { label: "Quantum Notebooks", value: "15" },
   ];
 
   return (
@@ -137,7 +137,7 @@ const Home = () => {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-                {user && (
+                {
                   <Link to="/register">
                     <Button
                       size="lg"
@@ -148,7 +148,7 @@ const Home = () => {
                       <span className="absolute inset-0 bg-white/10 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity"></span>
                     </Button>
                   </Link>
-                )}
+                }
                 <Link to="/schedule">
                   <Button
                     variant="outline"
@@ -173,7 +173,7 @@ const Home = () => {
                 {stats.map((stat, index) => (
                   <motion.div
                     key={stat.label}
-                    className="text-center glass-card p-4 rounded-xl border border-white"
+                    className="text-center glass-card p-4 rounded-xl border "
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.2 }}
                   >
